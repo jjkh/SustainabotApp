@@ -8,6 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:background="#ddeeff"
     android:layout_centerHorizontal="true"
     tools:context="nz.co.duality.sustainabot.RobotRemote">
 
@@ -19,24 +20,57 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:weightSum="2"
+        android:baselineAligned="false">
 
-        <SeekBar
-            android:layout_margin="50dp"
-            android:layout_gravity="start|center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/seekBarVert"
-            android:
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:id="@+id/seekBarVert"
+                android:layout_marginStart="-40dp"
+                android:layout_marginEnd="80dp"
+                android:progressDrawable="@drawable/seekbar_vert"
+                android:thumb="@drawable/seek_bar_thumb"
+                android:rotation="270"
+                android:max="254"
+                android:splitTrack="false"
+                android:progress="127" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:rotation="270" />
+            android:orientation="vertical"
+            android:paddingTop="0dp">
 
-        <SeekBar
-            android:layout_margin="50dp"
-            android:layout_gravity="start|center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/seekBarHori"
-            android:layout_weight="1" />
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="72dp"
+                android:layout_margin="30dp"
+                android:layout_gravity="bottom"
+                android:progressDrawable="@drawable/seekbar_hori"
+                android:thumb="@drawable/seek_bar_thumb"
+                android:splitTrack="false"
+                android:id="@+id/seekBarHori"
+                android:max="254"
+                android:progress="127" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_gravity="top|end"
+                android:text="@string/kick"
+                android:onClick="kick"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

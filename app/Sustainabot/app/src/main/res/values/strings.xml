@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Sustainabot</string>
     <string name="stats">Stats</string>
+    <string name="kick">Kick</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btRequired">This app requires Bluetooth to be enabled.</string>
+    <string name="OK">OK</string>
 </resources>
