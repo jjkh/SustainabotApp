@@ -23,7 +23,7 @@ public class StatsScreen extends AppCompatActivity {
     TextView auto_aim;
     CheckBox auto_aim_box;
 
-    byte[] response = new byte[] {0, 0, 0, 0, 0, 0, 0, 0};
+    byte[] response = new byte[] {0, 0, 0, 0, 0, 0, 0};
     int total_energy_points = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,8 +155,7 @@ public class StatsScreen extends AppCompatActivity {
 
     public void save(View view) {
         Intent returnIntent = getIntent();
-        String responseString = new String(response);
-        returnIntent.putExtra("response", responseString);
+        returnIntent.putExtra("response", response);
         setResult(Activity.RESULT_OK, returnIntent);
         finish();
     }
