@@ -19,6 +19,7 @@ public class RobotRemote extends AppCompatActivity {
     SeekBar vertBar;
 
     BluetoothSPP mBt;
+    static final int CHANGE_STATS = 26;
 
     boolean btConnected;
 
@@ -84,6 +85,14 @@ public class RobotRemote extends AppCompatActivity {
                 mBt.connect(data);
                 btConnected = true;
             }
+        }  else if (requestCode == CHANGE_STATS) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (btConnected) {
+                    mBt.send(new byte[] {(byte) 255, 1, 10, 100, 0}, false);
+                    mBt.send(data.getStringExtra("response"), false);
+                    mBt.send(new byte[] {(byte) 255, 100, 10, 1, 0}, true);
+                }
+            }
         }
     }
 
@@ -112,5 +121,14 @@ public class RobotRemote extends AppCompatActivity {
     public void kick(View view) {
         if (btConnected)
             mBt.send(new byte[] {2, 0}, false);
+    }
+
+    public void changeStats(View view) {
+        if (btConnected) {
+            Intent intent = new Intent(getApplicationContext(), StatsScreen.class);
+            startActivityForResult(intent, CHANGE_STATS);
+        } else {
+            Toast.makeText(this, "Connect your device first!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
