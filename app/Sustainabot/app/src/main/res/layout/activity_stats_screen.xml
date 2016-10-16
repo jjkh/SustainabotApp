@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="50/50"
+        android:text="0/50"
         android:id="@+id/maxpoints_TextView"
         android:layout_gravity="center_horizontal"
         android:textColor="#01579B"
