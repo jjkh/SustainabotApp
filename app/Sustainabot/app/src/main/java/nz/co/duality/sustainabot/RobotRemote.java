@@ -89,7 +89,10 @@ public class RobotRemote extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 if (btConnected) {
                     mBt.send(new byte[] {(byte) 255, 1, 10, 100, 0}, false);
-                    mBt.send(data.getStringExtra("response"), false);
+                    byte[] states = data.getByteArrayExtra("response");
+                    for (int i = 0; i < 7; i++) {
+                        mBt.send(new byte[] {(byte) (i+1), states[i], 0}, false);
+                    }
                     mBt.send(new byte[] {(byte) 255, 100, 10, 1, 0}, true);
                 }
             }
