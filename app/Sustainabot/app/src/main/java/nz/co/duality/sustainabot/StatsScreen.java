@@ -34,7 +34,6 @@ public class StatsScreen extends AppCompatActivity {
         total_energy = (TextView) findViewById(R.id.maxpoints_TextView);
         top_speed = (TextView) findViewById(R.id.topspeedPoints);
         reverse_speed = (TextView) findViewById(R.id.revspeedPoints);
-        acceleration = (TextView) findViewById(R.id.accelerationPoints);
         turn_speed = (TextView) findViewById(R.id.turnspeedPoints);
         kick_power = (TextView) findViewById(R.id.kickpowerPoints);
         auto_aim = (TextView) findViewById(R.id.autoaimPoints);
