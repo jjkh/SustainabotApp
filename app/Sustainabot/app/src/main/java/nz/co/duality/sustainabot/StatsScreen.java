@@ -17,13 +17,12 @@ public class StatsScreen extends AppCompatActivity {
     TextView total_energy;
     TextView top_speed;
     TextView reverse_speed;
-    TextView acceleration;
     TextView turn_speed;
     TextView kick_power;
     TextView auto_aim;
     CheckBox auto_aim_box;
 
-    byte[] response;
+    byte[] response = new byte[] {1, 1, 1, 1, 1};
 
     int total_energy_points = 0;
     @Override
@@ -118,7 +117,7 @@ public class StatsScreen extends AppCompatActivity {
         if (response[2]  > 1) {
             response[2]--;
             total_energy_points--;
-            turn_speed.setText(Integer.toString(response[3]) + "/ 15");
+            turn_speed.setText(Integer.toString(response[2]) + "/ 15");
             total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
@@ -127,7 +126,7 @@ public class StatsScreen extends AppCompatActivity {
         if (response[2] < 15 && total_energy_points < 40) {
             response[2]++;
             total_energy_points++;
-            turn_speed.setText(Integer.toString(response[3]) + "/ 15");
+            turn_speed.setText(Integer.toString(response[2]) + "/ 15");
             total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
@@ -136,7 +135,7 @@ public class StatsScreen extends AppCompatActivity {
         if (response[3] > 1) {
             response[3]--;
             total_energy_points--;
-            kick_power.setText(Integer.toString(response[4]) + "/ 15");
+            kick_power.setText(Integer.toString(response[3]) + "/ 15");
             total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
@@ -145,7 +144,7 @@ public class StatsScreen extends AppCompatActivity {
         if (response[3] < 15 && total_energy_points < 40) {
             response[3]++;
             total_energy_points++;
-            kick_power.setText(Integer.toString(response[4]) + "/ 15");
+            kick_power.setText(Integer.toString(response[3]) + "/ 15");
             total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
