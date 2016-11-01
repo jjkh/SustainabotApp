@@ -23,7 +23,8 @@ public class StatsScreen extends AppCompatActivity {
     TextView auto_aim;
     CheckBox auto_aim_box;
 
-    byte[] response = new byte[] {0, 0, 0, 0, 0, 0, 0};
+    byte[] response;
+
     int total_energy_points = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class StatsScreen extends AppCompatActivity {
                     } else {
                         total_energy_points += 15;
                         total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
-                        response[5] = 2;
+                        response[5] = 16;
                         auto_aim.setText("15 / 15");
                     }
                 } else {
@@ -62,17 +63,17 @@ public class StatsScreen extends AppCompatActivity {
             }
         });
 
-        byte[] start_stats = getIntent().getByteArrayExtra("START_STATS");
-        total_energy_points = 0;
-        for (byte i : start_stats)
+        response = getIntent().getByteArrayExtra("START_STATS");
+        total_energy_points = -1;
+        for (byte i : response)
             total_energy_points += i;
         total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
-        top_speed.setText(Byte.toString(start_stats[0]) + "/ 15");
-        reverse_speed.setText(Byte.toString(start_stats[1]) + "/ 15");
-        acceleration.setText(Byte.toString(start_stats[2]) + "/ 15");
-        turn_speed.setText(Byte.toString(start_stats[3]) + "/ 15");
-        kick_power.setText(Byte.toString(start_stats[4]) + "/ 15");
-        auto_aim.setText(Byte.toString(start_stats[5]) + "/ 15");
+        top_speed.setText(Byte.toString(response[0]) + "/ 15");
+        reverse_speed.setText(Byte.toString(response[1]) + "/ 15");
+        acceleration.setText(Byte.toString(response[2]) + "/ 15");
+        turn_speed.setText(Byte.toString(response[3]) + "/ 15");
+        kick_power.setText(Byte.toString(response[4]) + "/ 15");
+        auto_aim.setText(Byte.toString(response[5]) + "/ 15");
     }
 
     public void inc_topspeed(View view) {
