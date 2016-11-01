@@ -48,12 +48,12 @@ public class StatsScreen extends AppCompatActivity {
                     } else {
                         total_energy_points += 15;
                         total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
-                        response[5] = 1;
+                        response[5] = 2;
                         auto_aim.setText("15 / 15");
                     }
                 } else {
                     if (response[5] == 1) {
-                        response[5] = 0;
+                        response[5] = 1;
                         auto_aim.setText("0 / 15");
                         total_energy_points -= 15;
                         total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
@@ -61,6 +61,18 @@ public class StatsScreen extends AppCompatActivity {
                 }
             }
         });
+
+        byte[] start_stats = getIntent().getByteArrayExtra("START_STATS");
+        total_energy_points = 0;
+        for (byte i : start_stats)
+            total_energy_points += i;
+        total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
+        top_speed.setText(Byte.toString(start_stats[0]) + "/ 15");
+        reverse_speed.setText(Byte.toString(start_stats[1]) + "/ 15");
+        acceleration.setText(Byte.toString(start_stats[2]) + "/ 15");
+        turn_speed.setText(Byte.toString(start_stats[3]) + "/ 15");
+        kick_power.setText(Byte.toString(start_stats[4]) + "/ 15");
+        auto_aim.setText(Byte.toString(start_stats[5]) + "/ 15");
     }
 
     public void inc_topspeed(View view) {
@@ -73,7 +85,7 @@ public class StatsScreen extends AppCompatActivity {
     }
 
     public void dec_topspeed(View view) {
-        if (response[0] > 0 && total_energy_points > 0) {
+        if (response[0] > 1 && total_energy_points > 0) {
             response[0]--;
             total_energy_points--;
             top_speed.setText(Integer.toString(response[0]) + "/ 15");
@@ -82,7 +94,7 @@ public class StatsScreen extends AppCompatActivity {
     }
 
     public void dec_revspeed(View view) {
-        if (response[1] > 0) {
+        if (response[1] > 1) {
             response[1]--;
             total_energy_points--;
             reverse_speed.setText(Integer.toString(response[1]) + "/ 15");
@@ -100,7 +112,7 @@ public class StatsScreen extends AppCompatActivity {
     }
 
     public void dec_acceleration(View view) {
-        if (response[2] > 0) {
+        if (response[2] > 1) {
             response[2]--;
             total_energy_points--;
             acceleration.setText(Integer.toString(response[2]) + "/ 15");
@@ -118,7 +130,7 @@ public class StatsScreen extends AppCompatActivity {
     }
 
     public void dec_turnspeed(View view) {
-        if (response[3]  > 0) {
+        if (response[3]  > 1) {
             response[3]--;
             total_energy_points--;
             turn_speed.setText(Integer.toString(response[3]) + "/ 15");
@@ -136,7 +148,7 @@ public class StatsScreen extends AppCompatActivity {
     }
 
     public void dec_kickpower(View view) {
-        if (response[4] > 0) {
+        if (response[4] > 1) {
             response[4]--;
             total_energy_points--;
             kick_power.setText(Integer.toString(response[4]) + "/ 15");

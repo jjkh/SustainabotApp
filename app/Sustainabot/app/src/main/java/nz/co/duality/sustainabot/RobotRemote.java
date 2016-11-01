@@ -23,6 +23,8 @@ public class RobotRemote extends AppCompatActivity {
 
     boolean btConnected;
 
+    byte[] states = new byte[] {1, 1, 1, 1, 1, 1};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +91,7 @@ public class RobotRemote extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 if (btConnected) {
                     mBt.send(new byte[] {(byte) 255, 1, 10, 100, 0}, false);
-                    byte[] states = data.getByteArrayExtra("response");
+                    states = data.getByteArrayExtra("response");
                     for (int i = 0; i < 7; i++) {
                         mBt.send(new byte[] {(byte) (i+1), states[i], 0}, false);
                     }
@@ -129,6 +131,7 @@ public class RobotRemote extends AppCompatActivity {
     public void changeStats(View view) {
         if (btConnected) {
             Intent intent = new Intent(getApplicationContext(), StatsScreen.class);
+            intent.putExtra("START_STATS", states);
             startActivityForResult(intent, CHANGE_STATS);
         } else {
             Toast.makeText(this, "Connect your device first!", Toast.LENGTH_SHORT).show();
