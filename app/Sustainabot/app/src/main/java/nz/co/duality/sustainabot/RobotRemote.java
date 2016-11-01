@@ -23,7 +23,7 @@ public class RobotRemote extends AppCompatActivity {
 
     boolean btConnected;
 
-    byte[] states = new byte[] {1, 1, 1, 1, 1, 1};
+    byte[] states = new byte[] {1, 1, 1, 1, 1};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,10 +92,10 @@ public class RobotRemote extends AppCompatActivity {
                 if (btConnected) {
                     mBt.send(new byte[] {(byte) 255, 1, 10, 100, 0}, false);
                     states = data.getByteArrayExtra("response");
-                    for (int i = 0; i < 7; i++) {
+                    for (int i = 0; i < 5; i++) {
                         mBt.send(new byte[] {(byte) (i+1), states[i], 0}, false);
                     }
-                    mBt.send(new byte[] {(byte) 255, 100, 10, 1, 0}, true);
+                    mBt.send(new byte[] {(byte) 255, 100, 10, 1, 0}, false);
                 }
             }
         }

@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="5/50"
+        android:text="4/40"
         android:id="@+id/maxpoints_TextView"
         android:layout_gravity="center_horizontal"
         android:textColor="#01579B"
@@ -161,62 +161,6 @@
         android:layout_height="2dp"
         android:background="@android:color/holo_green_light"
         android:id="@+id/spacer_four"
-        />
-
-    <RelativeLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Acceleration"
-            android:id="@+id/acceleration_TextView"
-            android:textColor="#000000"
-            android:layout_marginTop="12dp" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:text="-"
-            android:onClick="dec_acceleration"
-            android:id="@+id/dec_acceleration"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="1/15"
-            android:id="@+id/accelerationPoints"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/dec_acceleration"
-            android:layout_toEndOf="@+id/dec_acceleration"
-            android:textColor="#01579B"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp" />
-
-        <Button
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:text="+"
-            android:onClick="inc_acceleration"
-            android:id="@+id/inc_acceleration"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/accelerationPoints"
-            android:layout_toEndOf="@+id/accelerationPoints" />
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/holo_green_light"
-        android:id="@+id/spacer_five"
         />
 
     <RelativeLayout

@@ -44,20 +44,20 @@ public class StatsScreen extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    if (total_energy_points > 35) {
+                    if (total_energy_points > 25) {
                         auto_aim_box.setChecked(false);
                     } else {
                         total_energy_points += 15;
-                        total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
-                        response[5] = 16;
+                        total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
+                        response[4] = 16;
                         auto_aim.setText("15 / 15");
                     }
                 } else {
-                    if (response[5] == 1) {
-                        response[5] = 1;
+                    if (response[4] == 16) {
+                        response[4] = 1;
                         auto_aim.setText("0 / 15");
                         total_energy_points -= 15;
-                        total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
+                        total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
                     }
                 }
             }
@@ -67,21 +67,24 @@ public class StatsScreen extends AppCompatActivity {
         total_energy_points = -1;
         for (byte i : response)
             total_energy_points += i;
-        total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
+        total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         top_speed.setText(Byte.toString(response[0]) + "/ 15");
         reverse_speed.setText(Byte.toString(response[1]) + "/ 15");
-        acceleration.setText(Byte.toString(response[2]) + "/ 15");
-        turn_speed.setText(Byte.toString(response[3]) + "/ 15");
-        kick_power.setText(Byte.toString(response[4]) + "/ 15");
-        auto_aim.setText(Byte.toString(response[5]) + "/ 15");
+        turn_speed.setText(Byte.toString(response[2]) + "/ 15");
+        kick_power.setText(Byte.toString(response[3]) + "/ 15");
+        if (response[4] == 16) {
+            auto_aim.setText("15 / 15");
+        } else {
+            auto_aim.setText("0 / 15");
+        }
     }
 
     public void inc_topspeed(View view) {
-        if (response[0] < 15 && total_energy_points < 50) {
+        if (response[0] < 15 && total_energy_points < 40) {
             response[0]++;
             total_energy_points++;
             top_speed.setText(Integer.toString(response[0]) + "/ 15");
-            total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
+            total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
 
@@ -90,7 +93,7 @@ public class StatsScreen extends AppCompatActivity {
             response[0]--;
             total_energy_points--;
             top_speed.setText(Integer.toString(response[0]) + "/ 15");
-            total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
+            total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
 
@@ -99,70 +102,52 @@ public class StatsScreen extends AppCompatActivity {
             response[1]--;
             total_energy_points--;
             reverse_speed.setText(Integer.toString(response[1]) + "/ 15");
-            total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
+            total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
 
     public void inc_revspeed(View view) {
-        if (response[1] < 15 && total_energy_points < 50) {
+        if (response[1] < 15 && total_energy_points < 40) {
             response[1]++;
             total_energy_points++;
             reverse_speed.setText(Integer.toString(response[1]) + "/ 15");
-            total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
-        }
-    }
-
-    public void dec_acceleration(View view) {
-        if (response[2] > 1) {
-            response[2]--;
-            total_energy_points--;
-            acceleration.setText(Integer.toString(response[2]) + "/ 15");
-            total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
-        }
-    }
-
-    public void inc_acceleration(View view) {
-        if (response[2] < 15 && total_energy_points < 50) {
-            response[2]++;
-            total_energy_points++;
-            acceleration.setText(Integer.toString(response[2]) + "/ 15");
-            total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
+            total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
 
     public void dec_turnspeed(View view) {
-        if (response[3]  > 1) {
-            response[3]--;
+        if (response[2]  > 1) {
+            response[2]--;
             total_energy_points--;
             turn_speed.setText(Integer.toString(response[3]) + "/ 15");
-            total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
+            total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
 
     public void inc_turnspeed(View view) {
-        if (response[3] < 15 && total_energy_points < 50) {
-            response[3]++;
+        if (response[2] < 15 && total_energy_points < 40) {
+            response[2]++;
             total_energy_points++;
             turn_speed.setText(Integer.toString(response[3]) + "/ 15");
-            total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
+            total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
 
     public void dec_kickpower(View view) {
-        if (response[4] > 1) {
-            response[4]--;
+        if (response[3] > 1) {
+            response[3]--;
             total_energy_points--;
             kick_power.setText(Integer.toString(response[4]) + "/ 15");
-            total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
+            total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
 
     public void inc_kickpower(View view) {
-        if (response[4] < 15 && total_energy_points < 50) {
-            response[4]++;
+        if (response[3] < 15 && total_energy_points < 40) {
+            response[3]++;
             total_energy_points++;
             kick_power.setText(Integer.toString(response[4]) + "/ 15");
-            total_energy.setText(Integer.toString(total_energy_points) + "/ 50");
+            total_energy.setText(Integer.toString(total_energy_points) + "/ 40");
         }
     }
 
